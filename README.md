@@ -1,7 +1,7 @@
 # eDiscuss_Coding_Forum
 eDiscuss an Online forum web application where programmers can ask their queries related to any coding  problems, where programmer's community can interact and share their ideas with each other.
 
-Please go through the instructions first given below:-->>
+Please go through the instructions first which are given below:-->>
 
 1-First you need to download zip of this project then extract files in this path C/xampp/htdocs.
 2-You will find a ediscuss.sql files in database folder.
