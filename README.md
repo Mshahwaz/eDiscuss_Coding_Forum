@@ -10,4 +10,4 @@ Please go through the instructions first which are given below:-->>
 5-And then click on Go and that's it.
 ----------------------------------------------
 Your database has been created and you can run this project--->Thank YOU (^>*)
-Hi Mariyam
+
