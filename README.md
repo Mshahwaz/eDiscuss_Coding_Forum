@@ -3,3 +3,8 @@ eDiscuss an Online forum web application where programmers can ask their queries
 
 Please go through the instructions first which are given below:-->>
 
+Requirments :
+
+Mysql
+php-mysqli driver
+php
