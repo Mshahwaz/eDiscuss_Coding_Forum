@@ -19,9 +19,23 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `ediscuss`
---
+CREATE DATABASE ediscuss;
 
--- --------------------------------------------------------
+
+-- Switching to edicuss database
+USE ediscuss;
+
+
+-- creating admin user to connect with database from localhost only 
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin@123';
+GRANT ALL PRIVILEGES ON ediscuss.* TO 'admin'@'localhost';
+FLUSH PRIVILEGES;
+
+-- creating admin user to connect with database from any host
+-- CREATE USER 'admin'@'%' IDENTIFIED BY 'admin@123';
+--
+--
+--------------------------------------------------------
 
 --
 -- Table structure for table `categories`
