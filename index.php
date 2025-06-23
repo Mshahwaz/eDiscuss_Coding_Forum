@@ -28,7 +28,7 @@
     <?php include 'partials.php/_header.php'; ?>
     
 
-    <!--slider start here -->
+    <!--slider start here 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -51,7 +51,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>
+    </div> -->
     <!--category start here -->
     <div class="container my-3">
         <div class="contaiter text-center" id="ques">
