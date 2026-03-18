@@ -1,3 +1,5 @@
+<?php include '/partials.php/_dbconnect.php';?>
+<?php include '/partials.php/_header.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -24,8 +26,6 @@
 </head>
 
 <body>
-    <?php include '/partials.php/_dbconnect.php';?>
-    <?php include '/partials.php/_header.php'; ?>
     
 
     <!--slider start here 
