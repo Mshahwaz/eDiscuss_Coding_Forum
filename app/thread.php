@@ -1,3 +1,6 @@
+<?php include 'partials.php/_dbconnect.php';  ?>
+
+<?php include 'partials.php/_header.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -23,10 +26,6 @@
 </head>
 
 <body>  
-    <?php include 'partials.php/_dbconnect.php';  ?>
-
-    <?php include 'partials.php/_header.php'; ?>
-  
     <?php
     $id=$_GET['threadid'];
     $sql="SELECT * FROM `threads` WHERE thread_id=$id;";
