@@ -7,14 +7,14 @@ if(isset($_SESSION['loggedin'])&&$_SESSION['loggedin']==true){
 }
 echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="container-fluid">
-  <a class="navbar-brand" href="/forum">eDiscuss</a>
+  <a class="navbar-brand" href="/">eDiscuss</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/forum">Home</a>
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,7 +51,7 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     }
         if(!$showlog){
           echo '<p class="text-light my-2 mx-2">Welcome '.$_SESSION['useremail'].'</p>';
-        echo '<a href="/forum/partials.php/_logout.php" class="btn btn-primary mx-2">Log out</a>';
+        echo '<a href="partials.php/_logout.php" class="btn btn-primary mx-2">Log out</a>';
         }
  echo '</div>
 </div>

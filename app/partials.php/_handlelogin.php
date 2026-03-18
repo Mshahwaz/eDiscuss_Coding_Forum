@@ -15,12 +15,12 @@ if ($numrows==1){
         $_SESSION['useremail'] = $loginemail;
         $_SESSION['sno'] = $row['sno'];
         //echo "logged in". $loginemail;
-        header("Location:/forum/index.php?showalert=true");
+        header("Location:index.php?showalert=true");
         exit();
     }else {
         //echo "unable to login";
         $showerror="true";
-        header("Location:/forum/index.php?showerror=$showerror&error=false");
+        header("Location:index.php?showerror=$showerror&error=false");
     }
 }
 }
