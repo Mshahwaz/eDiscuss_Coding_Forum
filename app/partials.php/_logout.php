@@ -2,7 +2,7 @@
 echo "Logging you out.Please wait...";
 session_start();
 session_destroy();
-header("Location:index.php?logout=true");
+header("Location:/html/index.php?logout=true");
 exit();
 
 ?>
