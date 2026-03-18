@@ -10,7 +10,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/html/partials.php/_handlelogin.php" method="post">
+                <form action="/partials.php/_handlelogin.php" method="post">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Username</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" name="loginemail"

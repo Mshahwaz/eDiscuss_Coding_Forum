@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $result=mysqli_query($conn,$sql);
         if($result){
             $showalert=true;
-            header("Location:/html/index.php?signupsuccess=true");
+            header("Location:/index.php?signupsuccess=true");
             exit;
         }
 
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         
     }
 }
-header("Location:/html/index.php?signupsuccess=false&error=$showerror");
+header("Location:/index.php?signupsuccess=false&error=$showerror");
     }
 
     
