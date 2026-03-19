@@ -37,7 +37,7 @@ while ($row=mysqli_fetch_assoc($result)) {
     $sql2="SELECT user_email FROM `users` WHERE `sno`='$thread_user_id'";
     $result2=mysqli_query($conn,$sql2);
     $row2=mysqli_fetch_assoc($result2);
-    $postedby=$row2['user_email'];
+    $postedby = $row2 ? $row2['user_email'] : 'Unknown user';
 }
     ?>
     <?php
@@ -110,12 +110,13 @@ while ($row=mysqli_fetch_assoc($result)) {
     $sql2="SELECT user_email FROM `users` WHERE `sno`='$thread_user_id'";
     $result2=mysqli_query($conn,$sql2);
     $row2=mysqli_fetch_assoc($result2);
+    $commentBy = $row2 ? $row2['user_email'] : 'Unknown user';
     echo '<div class="d-flex my-3">
             <div class="flex-shrink-0">
                 <img src="img/userdefault.jfif" width="45px" alt="...">
             </div>
             <div class="flex-grow-1 ms-2">
-            <p class="fw-bold my-0">'.$row2['user_email'].' at '.$comment_time.'</p>
+            <p class="fw-bold my-0">'.$commentBy.' at '.$comment_time.'</p>
                 '.$commentdesc.'
             </div>
         </div>';

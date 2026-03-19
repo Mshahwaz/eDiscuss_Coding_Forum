@@ -117,6 +117,7 @@ while ($row=mysqli_fetch_assoc($result)) {
     $sql2="SELECT user_email FROM `users` WHERE `sno`='$thread_user_id'";
     $result2=mysqli_query($conn,$sql2);
     $row2=mysqli_fetch_assoc($result2);
+    $askedBy = $row2 ? $row2['user_email'] : 'Unknown user';
 
 
     echo '<div class="d-flex my-3">
@@ -126,7 +127,7 @@ while ($row=mysqli_fetch_assoc($result)) {
             <div class="flex-grow-1 ms-2">
             
                 <h5><a href="thread.php?threadid='.$id.'" class="text-dark text-decoration-none">'.$title.'</a></h5>
-                '.$desc.' </div><p class="fw-bold my-0"><i>Asked By: </i>'.$row2['user_email'].' at '.$threadtime.'</p>
+                '.$desc.' </div><p class="fw-bold my-0"><i>Asked By: </i>'.$askedBy.' at '.$threadtime.'</p>
         </div>';
 }
 if($noresult){
