@@ -1,3 +1,5 @@
+<?php include 'partials.php/_dbconnect.php';  ?>
+<?php include 'partials.php/_header.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -46,8 +48,7 @@
 </head>
 
 <body background-color:blue;>
-    <?php include 'partials.php/_dbconnect.php';  ?>
-    <?php include 'partials.php/_header.php'; ?>
+
     
     <?php 
     $showalert=false;
