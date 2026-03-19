@@ -27,6 +27,47 @@
 
 <body>
     
+    <?php
+    function buildCategoryImage($categoryName) {
+        $palettes = [
+            ['#0f172a', '#2563eb', '#38bdf8', '#e0f2fe'],
+            ['#1f2937', '#059669', '#34d399', '#d1fae5'],
+            ['#3f1d2e', '#db2777', '#f472b6', '#fce7f3'],
+            ['#3b0764', '#7c3aed', '#c084fc', '#f3e8ff'],
+            ['#172554', '#ea580c', '#fdba74', '#ffedd5'],
+            ['#082f49', '#0891b2', '#67e8f9', '#cffafe']
+        ];
+
+        $hash = abs(crc32($categoryName));
+        $palette = $palettes[$hash % count($palettes)];
+        $primary = $palette[0];
+        $secondary = $palette[1];
+        $accent = $palette[2];
+        $soft = $palette[3];
+        $safeName = htmlspecialchars($categoryName, ENT_QUOTES, 'UTF-8');
+        $safeLabel = htmlspecialchars(strtoupper(substr($categoryName, 0, 1)), ENT_QUOTES, 'UTF-8');
+
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+            <defs>
+                <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="'.$primary.'" />
+                    <stop offset="55%" stop-color="'.$secondary.'" />
+                    <stop offset="100%" stop-color="'.$accent.'" />
+                </linearGradient>
+            </defs>
+            <rect width="640" height="360" fill="url(#bg)" />
+            <circle cx="530" cy="78" r="88" fill="'.$soft.'" fill-opacity="0.16" />
+            <circle cx="120" cy="305" r="120" fill="#ffffff" fill-opacity="0.08" />
+            <rect x="42" y="42" width="108" height="108" rx="28" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.28" />
+            <text x="76" y="114" fill="#ffffff" font-family="Arial, sans-serif" font-size="52" font-weight="700">'.$safeLabel.'</text>
+            <text x="48" y="215" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="700">'.$safeName.'</text>
+            <text x="48" y="258" fill="'.$soft.'" font-family="Arial, sans-serif" font-size="22">Coding Discussions</text>
+            <path d="M435 250 L545 250 L515 288 L405 288 Z" fill="#ffffff" fill-opacity="0.1" />
+        </svg>';
+
+        return 'data:image/svg+xml;charset=UTF-8,' . rawurlencode($svg);
+    }
+    ?>
 
     <!--slider start here 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -67,9 +108,10 @@ while ($row=mysqli_fetch_assoc($result)) {
   $id=$row['category_id'];
   $cat=$row['category_name'];
   $desc=$row['category_desc'];
+  $categoryImage = buildCategoryImage($cat);
    echo '<div class="col-md-4 my-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="https://source.unsplash.com/1600x900/?'.$cat.',coding" class="card-img-top" alt="...">
+                    <img src="'.$categoryImage.'" class="card-img-top" alt="'.$cat.' category image">
                     <div class="card-body">
                         <h5 class="card-title"><a href="threadlist.php?catid='.$id.'">'.$cat.'</a></h5>
                         <p class="card-text">'.substr($desc,0,100).'...</p>
