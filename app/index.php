@@ -29,40 +29,40 @@
     
     <?php
     function buildCategoryImage($categoryName) {
-        $palettes = [
-            ['#0f172a', '#2563eb', '#38bdf8', '#e0f2fe'],
-            ['#1f2937', '#059669', '#34d399', '#d1fae5'],
-            ['#3f1d2e', '#db2777', '#f472b6', '#fce7f3'],
-            ['#3b0764', '#7c3aed', '#c084fc', '#f3e8ff'],
-            ['#172554', '#ea580c', '#fdba74', '#ffedd5'],
-            ['#082f49', '#0891b2', '#67e8f9', '#cffafe']
+        $logoMap = [
+            'python' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+            'javascript' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+            'js' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+            'django' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg',
+            'flask' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg',
+            'c' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg',
+            'c++' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+            'cpp' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+            'php' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+            'java' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'
         ];
 
-        $hash = abs(crc32($categoryName));
-        $palette = $palettes[$hash % count($palettes)];
-        $primary = $palette[0];
-        $secondary = $palette[1];
-        $accent = $palette[2];
-        $soft = $palette[3];
+        $categoryKey = strtolower(trim($categoryName));
+        if (isset($logoMap[$categoryKey])) {
+            return $logoMap[$categoryKey];
+        }
+
         $safeName = htmlspecialchars($categoryName, ENT_QUOTES, 'UTF-8');
         $safeLabel = htmlspecialchars(strtoupper(substr($categoryName, 0, 1)), ENT_QUOTES, 'UTF-8');
-
         $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
             <defs>
                 <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="'.$primary.'" />
-                    <stop offset="55%" stop-color="'.$secondary.'" />
-                    <stop offset="100%" stop-color="'.$accent.'" />
+                    <stop offset="0%" stop-color="#0f172a" />
+                    <stop offset="100%" stop-color="#2563eb" />
                 </linearGradient>
             </defs>
             <rect width="640" height="360" fill="url(#bg)" />
-            <circle cx="530" cy="78" r="88" fill="'.$soft.'" fill-opacity="0.16" />
-            <circle cx="120" cy="305" r="120" fill="#ffffff" fill-opacity="0.08" />
-            <rect x="42" y="42" width="108" height="108" rx="28" fill="#ffffff" fill-opacity="0.12" stroke="#ffffff" stroke-opacity="0.28" />
-            <text x="76" y="114" fill="#ffffff" font-family="Arial, sans-serif" font-size="52" font-weight="700">'.$safeLabel.'</text>
-            <text x="48" y="215" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="700">'.$safeName.'</text>
-            <text x="48" y="258" fill="'.$soft.'" font-family="Arial, sans-serif" font-size="22">Coding Discussions</text>
-            <path d="M435 250 L545 250 L515 288 L405 288 Z" fill="#ffffff" fill-opacity="0.1" />
+            <circle cx="540" cy="85" r="72" fill="rgba(255,255,255,0.12)" />
+            <circle cx="110" cy="290" r="95" fill="rgba(255,255,255,0.08)" />
+            <rect x="48" y="52" width="108" height="108" rx="24" fill="rgba(255,255,255,0.12)" />
+            <text x="80" y="122" fill="#ffffff" font-family="Arial, sans-serif" font-size="52" font-weight="700">'.$safeLabel.'</text>
+            <text x="48" y="220" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="700">'.$safeName.'</text>
+            <text x="48" y="265" fill="#bfdbfe" font-family="Arial, sans-serif" font-size="22">Coding Discussions</text>
         </svg>';
 
         return 'data:image/svg+xml;charset=UTF-8,' . rawurlencode($svg);
@@ -111,7 +111,7 @@ while ($row=mysqli_fetch_assoc($result)) {
   $categoryImage = buildCategoryImage($cat);
    echo '<div class="col-md-4 my-3">
                 <div class="card" style="width: 18rem;">
-                    <img src="'.$categoryImage.'" class="card-img-top" alt="'.$cat.' category image">
+                    <img src="'.$categoryImage.'" class="card-img-top p-4" alt="'.$cat.' category image" style="height: 220px; object-fit: contain; background: linear-gradient(135deg, #eff6ff, #dbeafe);">
                     <div class="card-body">
                         <h5 class="card-title"><a href="threadlist.php?catid='.$id.'">'.$cat.'</a></h5>
                         <p class="card-text">'.substr($desc,0,100).'...</p>
