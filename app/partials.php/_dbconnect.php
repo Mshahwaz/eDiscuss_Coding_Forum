@@ -1,5 +1,5 @@
 <?php
-$servername="forum_db";
+$servername="forum_mysql_db";
 $username="admin";
 $password="admin@123";
 $database="ediscuss";
