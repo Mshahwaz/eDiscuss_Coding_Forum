@@ -1,44 +1,75 @@
-# eDiscuss_Coding_Forum
-eDiscuss an Online forum web application where programmers can ask their queries related to any coding  problems, where programmer's community can interact and share their ideas with each other.
+# eDiscuss Coding Forum
 
-Please go through the instructions first which are given below:-->>
+eDiscuss is an online forum web application where programmers can ask coding-related questions and share ideas with the community.
 
-Requirments :
+## Preview
 
-Mysql
-php-mysqli driver
-php
+![Preview 1](pic1.png)
+![Preview 2](pic2.png)
+![Preview 3](pic3.png)
 
+## Requirements
 
-## Step 1: Create a bridge network for app<->db-<>admin_db connection
+- Docker
+- A built app image for this project
 
+## Docker Setup
+
+### 1. Create a bridge network
+
+```powershell
 docker network create forum_net
+```
 
-## (optional) To Retain DB Data 
+### 2. Create a volume for MySQL data (optional)
 
+```powershell
 docker volume create forum_db
+```
 
-## Step2: Start Mysql DB Container
+### 3. Start the MySQL container
 
-docker run -d \  
---name forum_mysql_db \
---network forum_net \
--e MYSQL_ROOT_PASSWORD=root \
--v $(pwd)/database/ediscuss.sql:/docker-entrypoint-initdb.d/ediscuss.sql \
--v forum_db:/var/lib/mysql \ 
-mysql:8.0
+```powershell
+docker run -d `
+  --name forum_mysql_db `
+  --network forum_net `
+  -e MYSQL_ROOT_PASSWORD=root `
+  -v ${PWD}\database\ediscuss.sql:/docker-entrypoint-initdb.d/ediscuss.sql `
+  -v forum_db:/var/lib/mysql `
+  mysql:8.0
+```
 
-## Step3: Start Forum application container 
+### 4. Start the forum application container
 
-docker run -d -p 8080:80 \
---name forum-app \
---network forum_net \
-forum:<img-tag>
+Replace `forum:<img-tag>` with your built image name.
 
-## (optional) for Db console view
+```powershell
+docker run -d -p 8080:80 `
+  --name forum-app `
+  --network forum_net `
+  forum:<img-tag>
+```
 
-docker run -d -p 8081:80 \
---name forum_db_admin \
---network forum_net \
--e PMA_HOST=forum_mysql_db \
-phpmyadmin/phpmyadmin
+### 5. Open the app
+
+Visit:
+
+```text
+http://localhost:8080
+```
+
+## Optional: phpMyAdmin
+
+```powershell
+docker run -d -p 8081:80 `
+  --name forum_db_admin `
+  --network forum_net `
+  -e PMA_HOST=forum_mysql_db `
+  phpmyadmin/phpmyadmin
+```
+
+Then open:
+
+```text
+http://localhost:8081
+```
